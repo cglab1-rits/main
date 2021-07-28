@@ -141,7 +141,7 @@ function firstscript() {
 			}
 		},30);
 	}
-	// デフォルトの画像データを配列に格納   兼容性加载问题出在这里！！！！！！！
+	// デフォルトの画像データを配列に格納 
 	if(isSupportWebp){
 	document.images.image.src = "Data_jin/Data_jin_Webp/data0/image010.webp";
 	filename = "Data_jin/Data_jin_Webp/data";
