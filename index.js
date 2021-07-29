@@ -26,10 +26,15 @@ function firstscript() {
 	oDiv.onmouseout=function(){
 		startMove(-100);
 		}
+	oDiv.onclick=function(){
+		if(oDiv.offsetLeft==-100)	startMove(0);
+		else if(oDiv.offsetLeft==0)	startMove(-100);
+		}
 	function startMove(end){
 		clearInterval(timer);
 		timer=setInterval(function(){
 			var speed=0;
+			
 			if(oDiv.offsetLeft>end){
 				speed=-20;
 			}else{

@@ -103,13 +103,13 @@ function firstscript() {
 	}
 	if(img_size<=690){
 		if(device_direction==0){
-			document.images.image.width = img_size-45;
-			document.images.image.height = img_size-45;
+			document.images.image.width = img_size-60;
+			document.images.image.height = img_size-60;
 		}
 		else{
 			if(supportsTouch){
-				document.images.image.width = img_size-50;
-				document.images.image.height = img_size-50;
+				document.images.image.width = img_size-60;
+				document.images.image.height = img_size-60;
 			}
 			else{
 				document.images.image.width = img_size-90;
@@ -124,6 +124,10 @@ function firstscript() {
 		}
 	oDiv.onmouseout=function(){
 		startMove(-100);
+		}
+	oDiv.onclick=function(){
+		if(oDiv.offsetLeft==-100)	startMove(0);
+		else if(oDiv.offsetLeft==0)	startMove(-100);
 		}
 	function startMove(end){
 		clearInterval(timer);
@@ -141,7 +145,7 @@ function firstscript() {
 			}
 		},30);
 	}
-	// デフォルトの画像データを配列に格納   
+	// デフォルトの画像データを配列に格納 
 	if(isSupportWebp){
 	document.images.image.src = "Data_gi/Data_gi_Webp/data0/image023.webp";
 	filename = "Data_gi/Data_gi_Webp/data";
