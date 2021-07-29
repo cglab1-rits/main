@@ -117,6 +117,23 @@ function firstscript() {
 			}
 		}
 	}
+	var click = 0;
+	var aNodes = document.querySelectorAll("a");
+	for(var i=0; i<aNodes.length; i++){
+		aNodes[i].addEventListener("click",function(e){
+			if (click==0) {
+				location.href=this.href;
+			}
+			else{ 
+				if (e && e.preventDefault ){
+         					e.preventDefault(); 
+    				}
+				else {
+        					window.event.returnValue = false;
+				}
+			}
+		})
+	}
 	var oDiv=document.getElementById('leftmenu');
 	var timer;
 	oDiv.onmouseover=function(){
@@ -140,8 +157,10 @@ function firstscript() {
 			}
 			if(oDiv.offsetLeft==end){
 				clearInterval(timer);
+				click=0;
 			}else{
 				oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				click=1;
 			}
 		},30);
 	}

@@ -6,7 +6,8 @@ const isSupported = !!(
 
 function firstscript() {
 	var window_width = document.documentElement.clientWidth;
-	var syoukai=document.getElementById('syoukai');
+	var syoukai = document.getElementById('syoukai');
+	var click = 0;
 	if(window_width<600){
 		syoukai.style.width=window_width-80;
 	}
@@ -17,6 +18,22 @@ function firstscript() {
 		else{
 			syoukai.style.width=800;
 		}
+	}
+	var aNodes = document.querySelectorAll("a");
+	for(var i=0; i<aNodes.length; i++){
+		aNodes[i].addEventListener("click",function(e){
+			if (click==0) {
+				location.href=this.href;
+			}
+			else{ 
+				if (e && e.preventDefault ){
+         					e.preventDefault(); 
+    				}
+				else {
+        					window.event.returnValue = false;
+				}
+			}
+		})
 	}
 	var oDiv=document.getElementById('leftmenu');
 	var timer;
@@ -34,7 +51,6 @@ function firstscript() {
 		clearInterval(timer);
 		timer=setInterval(function(){
 			var speed=0;
-			
 			if(oDiv.offsetLeft>end){
 				speed=-20;
 			}else{
@@ -42,13 +58,18 @@ function firstscript() {
 			}
 			if(oDiv.offsetLeft==end){
 				clearInterval(timer);
+				click=0;
 			}else{
 				oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				click=1;
 			}
 		},30);
 	}
+
 	
 }
+
+
 
 var window_width = document.body.clientWidth;
 if(window_width<1100)
